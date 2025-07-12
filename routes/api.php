@@ -24,11 +24,11 @@ Route::post('/login', [AuthController::class, 'login']);     // Endpoint untuk l
 // --- Routes yang Dilindungi oleh Autentikasi Laravel Sanctum ---
 // Endpoint di dalam grup ini hanya bisa diakses oleh user yang sudah login
 // dan menyertakan token autentikasi yang valid di header Authorization.
-Route::get('/publikasi', [PublikasiController::class, 'index']);      // Mengambil semua publikasi
 Route::middleware('auth:sanctum')->group(function () {
-
+    
     // --- Routes untuk Publikasi (CRUD) ---
     // Endpoint untuk mengelola data publikasi
+    Route::get('/publikasi', [PublikasiController::class, 'index']);      // Mengambil semua publikasi
     Route::post('/publikasi', [PublikasiController::class, 'store']);     // Menambah publikasi baru
     Route::get('/publikasi/{id}', [PublikasiController::class, 'show']);  // Menampilkan detail satu publikasi berdasarkan ID
     Route::put('/publikasi/{id}', [PublikasiController::class, 'update']); // Memperbarui data publikasi berdasarkan ID
